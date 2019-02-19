@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <div class="container">
+        <h1>Contacts</h1>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Organization</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <td><a href="{% url 'contact_detail' contact.pk %}">{{ contact.name }}</a></td>
+                    <td>{{ contact.email }}</td>
+                    <td><a href="{% url 'organization_detail' contact.organization.pk %}">{{ contact.organization.name }}</a></td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
